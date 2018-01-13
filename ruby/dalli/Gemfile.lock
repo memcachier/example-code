@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    dalli (2.7.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dalli
+
+RUBY VERSION
+   ruby 2.5.0p0
+
+BUNDLED WITH
+   1.16.1
