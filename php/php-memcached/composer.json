@@ -1,0 +1,12 @@
+{
+    "name": "sascha/php-memcached",
+    "authors": [
+        {
+            "name": "Sascha",
+            "email": "sascha.trifunovic@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-memcached": "^3.0"
+    }
+}

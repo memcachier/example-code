@@ -1,0 +1,12 @@
+{
+    "name": "sascha/php-memcache-sasl",
+    "authors": [
+        {
+            "name": "Sascha",
+            "email": "sascha.trifunovic@gmail.com"
+        }
+    ],
+    "require": {
+        "memcachier/php-memcache-sasl": "^1.0"
+    }
+}
