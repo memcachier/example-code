@@ -1,0 +1,1 @@
+example:	java -cp target/classes:target/dependency/* com.memcachier.example.App
