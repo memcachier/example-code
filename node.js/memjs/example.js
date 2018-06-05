@@ -29,3 +29,5 @@ mc.get('hello', function(err, val) {
     console.log(val.toString('utf8'))
   }
 })
+
+mc.close()
