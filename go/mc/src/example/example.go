@@ -2,14 +2,8 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"os"
 	"github.com/memcachier/mc"
-)
-
-
-const (
-  connectionTimeout     time.Duration = 5 * time.Second
 )
 
 func main() {
