@@ -12,6 +12,8 @@ import java.lang.InterruptedException;
 import java.net.InetSocketAddress;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -23,29 +25,33 @@ public class App
     public static void main( String[] args )
     {
         List<InetSocketAddress> servers =
-          AddrUtil.getAddresses(System.getenv("MEMCACHIER_SERVERS"));
+          AddrUtil.getAddresses(System.getenv("MEMCACHIER_SERVERS").replace(",", " "));
         AuthInfo authInfo =
           AuthInfo.plain(System.getenv("MEMCACHIER_USERNAME"),
                          System.getenv("MEMCACHIER_PASSWORD"));
 
-        MemcachedClientBuilder builder =
-          new XMemcachedClientBuilder(servers);
+        MemcachedClientBuilder builder = new XMemcachedClientBuilder(servers);
 
         // configure SASL auth for each server
         for(InetSocketAddress server : servers) {
           builder.addAuthInfo(server, authInfo);
         }
 
-        // use binary protocol
+        // Use binary protocol (default: new TextCommandFactory())
         builder.setCommandFactory(new BinaryCommandFactory());
-
-        // builder.setFailureMode(false);
+        // Failure mode is not failover. In failure mode failed server stay in list (default: false)
+        builder.setFailureMode(false);
+        // Connection timeout in milliseconds (default: )
+        builder.setConnectTimeout(1000);
+        // Reconnect to servers (default: true)
+        builder.setEnableHealSession(true);
+        // Delay until reconnect attempt in milliseconds (default: 2000)
+        builder.setHealSessionInterval(2000);
 
         try {
           MemcachedClient mc = builder.build();
 
           try {
-            mc.set("user", 0, "pass");
             mc.set("foo", 0, "bar");
             String val = mc.get("foo");
             System.out.println(val);
