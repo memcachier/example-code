@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 	"os"
-	"github.com/memcachier/mc/src/mc"
+	"github.com/memcachier/mc"
 )
 
 
