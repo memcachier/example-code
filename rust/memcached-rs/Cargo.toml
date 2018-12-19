@@ -1,0 +1,8 @@
+[package]
+name = "memcached-rs"
+version = "0.1.0"
+authors = ["Sascha <sascha.trifunovic@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+memcached-rs = "0.4.1"
